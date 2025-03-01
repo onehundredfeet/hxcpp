@@ -929,7 +929,9 @@ class BuildTool
                   }
                   else if (!el.has.noerror)
                   {
-                     Log.error("Could not find include file \"" + name + "\"");
+//                     throw "B Could not find include file " + inName;
+                     trace('hi!');
+                     Log.error("C Could not find include file \"" + name + "\"");
                      //throw "Could not find include file " + name;
                   }
                default:
@@ -1074,7 +1076,9 @@ class BuildTool
                   }
                   else
                   {
-                     Log.error("Could not find include file \"" + subbed_name + "\"");
+                     trace('hi! B');
+  
+                     Log.error("B Could not find include file \"" + subbed_name + "\"");
 
                   }
             }
@@ -1487,6 +1491,7 @@ class BuildTool
    static public function main()
    {
      try {
+      trace('cwd ${Sys.getCwd()} vs ${FileSystem.absolutePath('.')}');
        runMain();
      }
      catch(e:Dynamic) {
@@ -1516,6 +1521,9 @@ class BuildTool
          defines.set(e, Sys.getEnv(e) );
 
 
+      for (a in args) {
+         trace('arg: $a');
+      }
       // Check for calling from haxelib ...
       if (args.length>0)
       {
@@ -2394,7 +2402,9 @@ class BuildTool
       }
       else if (!inAllowMissing)
       {
-         Log.error("Could not find include file \"" + inName + "\"");
+         trace('hi! C');
+
+         Log.error("A Could not find include file \"" + inName + "\"");
          //throw "Could not find include file " + name;
       }
    }

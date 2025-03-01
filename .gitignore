@@ -28,3 +28,4 @@ hxcpp.n
 *.ilk
 
 .vscode
+test/native/.haxelib

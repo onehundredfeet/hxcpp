@@ -238,6 +238,7 @@ class Builder
 
    public function runBuild(target:String, isStatic:Bool, arch:String, buildFlags:Array<String>)
    {
+      trace('RUN BUILD ${buildFlags}');
       var args = ["run", "hxcpp", getBuildFile() ].concat(buildFlags);
 
       Sys.println('\nBuild $target, link=' + (isStatic?"lib":"ndll")+' arch=$arch');
@@ -337,6 +338,7 @@ class Builder
 
    public static function main()
    {
+      trace('Bulder!!!');
       new Builder( Sys.args() );
    }
 }

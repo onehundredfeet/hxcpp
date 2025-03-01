@@ -125,6 +125,7 @@ class RunMain
 
    public static function main()
    {
+      trace('RUN MAIN ${Sys.getCwd()}');
      if (!executeHxcpp())
          showMessage();
    }

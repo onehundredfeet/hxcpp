@@ -1,3 +1,5 @@
+import sys.FileSystem;
+
 class Build extends hxcpp.Builder
 {
    // Create a build in 'bin' directory, with the "stdlibc++" flags for compatibility
@@ -10,6 +12,7 @@ class Build extends hxcpp.Builder
    // Override to ensure this version if hxcpp is used, even if haxelib says otherwise
    override public function runBuild(target:String, isStatic:Bool, arch:String, inFlags:Array<String>)
    {
+      trace('Running build');
        var args = ["run.n", "Build.xml"].concat(inFlags);
        var here = Sys.getCwd().split("\\").join("/");
 
@@ -20,6 +23,7 @@ class Build extends hxcpp.Builder
           parts.pop();
        var hxcppDir = parts.join("/");
 
+       trace('CWD Build${FileSystem.absolutePath('.')}');
        // This is how haxelib calls a 'run.n' script...
        Sys.setCwd(hxcppDir);
        args.push(here);
@@ -34,6 +38,7 @@ class Build extends hxcpp.Builder
 
    public static function main()
    {
+      trace('BUILD!!!');
       new Build( Sys.args() );
    }
 }
